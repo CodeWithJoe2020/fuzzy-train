@@ -1,0 +1,10 @@
+/* Style for incoming transactions (green) */
+.incoming-transaction {
+    color: green;
+  }
+  
+  /* Style for outgoing transactions (red) */
+  .outgoing-transaction {
+    color: red;
+  }
+  

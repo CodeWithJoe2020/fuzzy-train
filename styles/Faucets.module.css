@@ -1,0 +1,27 @@
+.linkList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .linkItem {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .linkItem:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .linkItem h2 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .linkItem p {
+    margin: 0.5rem 0 0;
+    font-size: 1rem;
+  }
+  

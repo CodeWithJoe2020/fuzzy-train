@@ -9,10 +9,13 @@ import {
   mainnet,
   optimism,
   polygon,
-  base,
-  zora,
+  bsc
+  
 } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
+import 'bootstrap/dist/css/bootstrap.css';
+import Navbar from '../components/Navbar'
+import TopNotificationBar from "../components/Topnotification"
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
@@ -20,15 +23,14 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
     polygon,
     optimism,
     arbitrum,
-    base,
-    zora,
+    bsc,
     ...(process.env.NEXT_PUBLIC_ENABLE_TESTNETS === 'true' ? [goerli] : []),
   ],
   [publicProvider()]
 );
 
 const { connectors } = getDefaultWallets({
-  appName: 'RainbowKit App',
+  appName: 'CodeWithJoe',
   projectId: 'YOUR_PROJECT_ID',
   chains,
 });
@@ -44,6 +46,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig config={wagmiConfig}>
       <RainbowKitProvider chains={chains}>
+      <TopNotificationBar/>
+        <Navbar/>
         <Component {...pageProps} />
       </RainbowKitProvider>
     </WagmiConfig>
