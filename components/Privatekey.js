@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { ethers } from 'ethers';
+import { Wallet } from 'ethers'; // You can still import specific parts from ethers
+import { useAccount } from 'wagmi'; // You can use wagmi hooks if needed for wallet connection
 
 function WalletGenerator() {
   const [walletInfo, setWalletInfo] = useState(null);
-
+  const { address } = useAccount(); // Example wagmi hook for connected wallet
+  
   const generateWallet = () => {
-    const wallet = ethers.Wallet.createRandom();
+    const wallet = Wallet.createRandom();
 
     const ethereumAddress = wallet.address;
     const privateKey = wallet.privateKey;
@@ -57,6 +59,7 @@ function WalletGenerator() {
               </div>
             </div>
           )}
+          {address && <p>Connected Wallet Address: {address}</p>}
         </div>
       </div>
     </div>
