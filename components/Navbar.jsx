@@ -29,7 +29,7 @@ const Navbar = () => {
             />
           </Link>
         </div>
-        
+        {/* <p>test</p> */}
         <button
           className="text-white md:hidden focus:outline-none"
           onClick={toggleNavbar}
