@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAccount } from 'wagmi';
+import Head from 'next/head';
 import Balance from '../components/balance';
 import EtherscanAPI from '../components/Etherscan';
 import TokenBalances from '../components/Erc20balances';
@@ -56,6 +57,11 @@ const WalletDashboard = () => {
       padding: '2rem',
       fontFamily: 'Arial, sans-serif'
     }}>
+        <Head>
+        <title>Wallet | Dashboard</title>
+        <meta content="Dashboard" name="Dashboard for ERC20 wallet" />
+        <link href="/favicon.ico" rel="icon" />
+      </Head>
       <h1 style={{
         textAlign: 'center',
         marginBottom: '2rem',
@@ -90,7 +96,7 @@ const WalletDashboard = () => {
         gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
         gap: '1rem',
       }}>
-        <DashboardCard title="Etherscan Data" fullWidth>
+        <DashboardCard title="Transactions" fullWidth>
           <EtherscanAPI />
         </DashboardCard>
 

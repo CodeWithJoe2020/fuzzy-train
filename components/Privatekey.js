@@ -1,11 +1,11 @@
-import { useState } from 'react';
-import { Wallet } from 'ethers'; // You can still import specific parts from ethers
-import { useAccount } from 'wagmi'; // You can use wagmi hooks if needed for wallet connection
+import { useEffect, useState } from 'react';
+import { Wallet } from 'ethers';
+import { useAccount } from 'wagmi';
 
 function WalletGenerator() {
   const [walletInfo, setWalletInfo] = useState(null);
-  const { address } = useAccount(); // Example wagmi hook for connected wallet
-  
+  const { address } = useAccount();
+
   const generateWallet = () => {
     const wallet = Wallet.createRandom();
 
@@ -20,6 +20,13 @@ function WalletGenerator() {
     });
   };
 
+  // Use useEffect to handle client-side state changes
+  useEffect(() => {
+    if (walletInfo) {
+      // This can be useful if you need to perform any side effects when walletInfo changes
+    }
+  }, [walletInfo]);
+
   return (
     <div className="container my-4">
       <div className="card mx-auto border-0" style={{ maxWidth: '600px' }}>
@@ -32,28 +39,19 @@ function WalletGenerator() {
             <div className="text-left">
               <div className="mb-3">
                 <strong>Ethereum Address:</strong>
-                <p
-                  className="text-monospace bg-light p-2 rounded"
-                  style={{ wordBreak: 'break-all' }}
-                >
+                <p className="text-monospace bg-light p-2 rounded" style={{ wordBreak: 'break-all' }}>
                   {walletInfo.ethereumAddress}
                 </p>
               </div>
               <div className="mb-3">
                 <strong>Private Key:</strong>
-                <p
-                  className="text-monospace bg-light p-2 rounded"
-                  style={{ wordBreak: 'break-all' }}
-                >
+                <p className="text-monospace bg-light p-2 rounded" style={{ wordBreak: 'break-all' }}>
                   {walletInfo.privateKey}
                 </p>
               </div>
               <div className="mb-3">
                 <strong>Mnemonic:</strong>
-                <p
-                  className="text-monospace bg-light p-2 rounded"
-                  style={{ wordBreak: 'break-word' }}
-                >
+                <p className="text-monospace bg-light p-2 rounded" style={{ wordBreak: 'break-word' }}>
                   {walletInfo.mnemonic}
                 </p>
               </div>

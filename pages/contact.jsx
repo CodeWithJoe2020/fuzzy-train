@@ -1,254 +1,124 @@
 import React from 'react';
+import Head from 'next/head';
 import { MessageCircle, Github, Mail, ExternalLink, Code, Youtube } from 'lucide-react';
 
-const ContactItem = ({ Icon, title, content, link }) => (
-  <div
-    style={{
-      backgroundColor: 'white',
-      padding: '1rem',
-      borderRadius: '0.5rem',
-      boxShadow:
-        '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
-      marginBottom: '1rem',
-    }}
+const ContactCard = ({ Icon, title, content, link }) => (
+  <a 
+    href={link} 
+    target="_blank" 
+    rel="noopener noreferrer"
+    className="block no-underline hover:no-underline"
   >
-    <h3
-      style={{
-        fontSize: '1.125rem',
-        fontWeight: 600,
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.5rem',
-        marginBottom: '0.5rem',
-      }}
-    >
-      <Icon style={{ width: '1.25rem', height: '1.25rem' }} />
-      {title}
-    </h3>
-    {content && (
-      <p
-        style={{
-          fontSize: '0.875rem',
-          color: '#4B5563',
-          marginBottom: '0.5rem',
-        }}
-      >
-        {content}
-      </p>
-    )}
-    {link && (
-      <a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{
-          color: '#3B82F6',
-          textDecoration: 'none',
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        View{' '}
-        <ExternalLink
-          style={{ marginLeft: '0.25rem', width: '1rem', height: '1rem' }}
-        />
-      </a>
-    )}
-  </div>
+    <div className="shadow-lg mb-4 rounded-3xl overflow-hidden" style={{ backgroundColor: '#2c2f58' }}>
+      <div className="flex items-center p-4">
+        {/* Icon and Text column */}
+        <div className="flex-grow">
+          <h3 className="text-xl font-semibold mb-2 flex items-center gap-2" style={{ color: '#818394' }}>
+            <Icon className="w-5 h-5" />
+            {title}
+          </h3>
+          {content && (
+            <p className="text-gray-400 text-sm mb-2">{content}</p>
+          )}
+        </div>
+        {/* Button column */}
+        <div className="flex-shrink-0">
+          <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg flex items-center">
+            View
+            <ExternalLink className="ml-1 w-4 h-4" />
+          </button>
+        </div>
+      </div>
+    </div>
+  </a>
 );
 
-export default function Contact() {
+const Contact = () => {
   return (
-    <div
-      style={{
-        minHeight: '100vh',
-        backgroundColor: '#F3F4F6',
-      }}
-    >
-      {/* Header Section */}
-      <div
-        style={{
-          backgroundColor: '#2C3E50',
-          color: 'white',
-          padding: '3rem 1rem',
-          marginBottom: '2rem',
-        }}
-      >
-        <div
-          style={{
-            maxWidth: '64rem',
-            margin: '0 auto',
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '2rem',
-          }}
-        >
-          <div
-            style={{
-              flex: '1 1 300px',
-            }}
-          >
-            <h1
-              style={{
-                fontSize: '2.5rem',
-                fontWeight: 700,
-                marginBottom: '1rem',
-              }}
-            >
-              CodeWithJoe
-            </h1>
-            <p style={{ fontSize: '1.25rem' }}>
-              Revolutionizing Web3, smart contracts, and AI solutions
-            </p>
-          </div>
-          <div
-            style={{
-              flex: '0 1 auto',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <button
-              onClick={() =>
-                window.open('https://codewithjoe.streamlit.app/', '_blank')
-              }
-              style={{
-                backgroundColor: '#3498DB',
-                color: 'white',
-                padding: '0.75rem 1.5rem',
-                borderRadius: '0.375rem',
-                border: 'none',
-                cursor: 'pointer',
-                fontSize: '1rem',
-                transition: 'background-color 0.3s',
-                display: 'flex',
-                alignItems: 'center',
-              }}
-              onMouseOver={(e) =>
-                (e.target.style.backgroundColor = '#2980B9')
-              }
-              onMouseOut={(e) =>
-                (e.target.style.backgroundColor = '#3498DB')
-              }
-            >
-              <MessageCircle
-                style={{ marginRight: '0.5rem', width: '1rem', height: '1rem' }}
-              />{' '}
-              Chat with CWJ-AI
-            </button>
+    <div className="min-h-screen bg-gray-50">
+      <Head>
+        <title>Contact</title>
+        <meta content="contact" name="CWJ contact page" />
+        <link href="/favicon.ico" rel="icon" />
+      </Head>
+
+      {/* Hero Section */}
+      <div className="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-16 mb-8">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-wrap items-center justify-between gap-8 max-w-6xl mx-auto">
+            <div className="flex-1 min-w-[300px]">
+              <h1 className="text-4xl font-bold mb-4">CodeWithJoe</h1>
+              <p className="text-xl text-gray-200">
+                Revolutionizing Web3, smart contracts, and AI solutions
+              </p>
+            </div>
+            <div>
+              <button 
+                onClick={() => window.open('https://codewithjoe.streamlit.app/', '_blank')}
+                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg flex items-center transition-colors duration-200"
+              >
+                <MessageCircle className="mr-2 w-5 h-5" />
+                Chat with CWJ-AI
+              </button>
+            </div>
           </div>
         </div>
       </div>
 
+      
+
       {/* Main Content */}
-      <div
-        style={{
-          maxWidth: '64rem',
-          margin: '0 auto',
-          padding: '0 1rem',
-        }}
-      >
-        <main
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr',
-            gap: '1rem',
-          }}
-        >
-          <div>
-            <ContactItem
+      <div className="container mx-auto px-4 max-w-6xl">
+        <div className="space-y-6">
+          {/* Contact Cards */}
+          <div id="contact" className="space-y-4">
+            <ContactCard
               Icon={Code}
               title="Fiverr"
               content="Web3, bots, smart contracts, frontend magic"
               link="https://www.fiverr.com/codingjoe700"
             />
-            <ContactItem
+            <ContactCard
               Icon={MessageCircle}
               title="Telegram"
               content="Telegram VIP"
               link="https://t.me/codewithjoevip"
             />
-            <ContactItem
+            <ContactCard
               Icon={Mail}
               title="Email"
               content="codeingwithjoe@gmail.com"
               link="mailto:codeingwithjoe@gmail.com"
             />
-            <ContactItem
+            <ContactCard
               Icon={Github}
               title="GitHub"
               link="https://github.com/CodeWithJoe2020"
             />
           </div>
-          <div>
-            <div
-              style={{
-                backgroundColor: 'white',
-                padding: '1rem',
-                borderRadius: '0.5rem',
-                boxShadow:
-                  '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
-              }}
-            >
-              <h2
-                style={{
-                  fontSize: '1.25rem',
-                  fontWeight: 600,
-                  marginBottom: '0.5rem',
-                }}
-              >
+
+          {/* YouTube Section */}
+          <div id="youtube" className="shadow-lg rounded-3xl overflow-hidden" style={{ backgroundColor: '#2c2f58' }}>
+            <div className="p-6">
+              <h2 className="text-xl font-semibold mb-3" style={{ color: '#818394' }}>
                 Join the Revolution
               </h2>
-              <p
-                style={{
-                  color: '#4B5563',
-                  marginBottom: '1rem',
-                }}
-              >
-                Subscribe to my YouTube channel for cutting-edge coding insights
-                and tutorials.
+              <p className="text-gray-400 text-sm mb-4">
+                Subscribe to my YouTube channel for cutting-edge coding insights and tutorials.
               </p>
               <button
-                style={{
-                  backgroundColor: '#E74C3C',
-                  color: 'white',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '0.375rem',
-                  border: 'none',
-                  cursor: 'pointer',
-                  width: '100%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  transition: 'background-color 0.3s',
-                }}
-                onMouseOver={(e) =>
-                  (e.target.style.backgroundColor = '#C0392B')
-                }
-                onMouseOut={(e) =>
-                  (e.target.style.backgroundColor = '#E74C3C')
-                }
-                onClick={() =>
-                  window.open('https://www.youtube.com/@CodeWithJoe', '_blank')
-                }
+                onClick={() => window.open('https://www.youtube.com/@CodeWithJoe', '_blank')}
+                className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-lg flex items-center justify-center transition-colors duration-200"
               >
-                <Youtube
-                  style={{
-                    marginRight: '0.5rem',
-                    width: '1rem',
-                    height: '1rem',
-                  }}
-                />{' '}
+                <Youtube className="mr-2 w-5 h-5" />
                 Subscribe Now
               </button>
             </div>
           </div>
-        </main>
+        </div>
       </div>
     </div>
   );
-}
+};
+
+export default Contact;
