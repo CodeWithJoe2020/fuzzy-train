@@ -105,6 +105,13 @@ const Navbar = () => {
               {toolsDropdownOpen && (
                 <div className="absolute left-0 mt-1 w-48 rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5">
                   <div className="py-1" role="menu">
+                  <Link
+                      href="/createtoken"
+                      className="block px-4 py-1 text-sm text-gray-100 hover:bg-gray-700"
+                      role="menuitem"
+                    >
+                      Create Token
+                    </Link>
                     <Link
                       href="/faucets"
                       className="block px-4 py-1 text-sm text-gray-100 hover:bg-gray-700"
@@ -112,13 +119,7 @@ const Navbar = () => {
                     >
                       Faucets
                     </Link>
-                    <Link
-                      href="/createtoken"
-                      className="block px-4 py-1 text-sm text-gray-100 hover:bg-gray-700"
-                      role="menuitem"
-                    >
-                      Create Token
-                    </Link>
+                   
                   </div>
                 </div>
               )}
